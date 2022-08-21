@@ -8,7 +8,6 @@ namespace DataStructure
 {
     public static class Node
     {
-        {
         public int data; //i have define two elements overthere
         public Node next;
 
@@ -18,7 +17,5 @@ namespace DataStructure
             data = d;
             next = null;
         }
-    }
-    }
-
-
+}
+}
