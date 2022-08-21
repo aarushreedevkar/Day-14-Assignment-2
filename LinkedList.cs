@@ -8,138 +8,152 @@ namespace DataStructure
 {
     public class LinkedList
     {
+        
+            internal Node head;
+        public void Add(int data)
         {
-
-        //Creating a node head, which will be pointing to the first element in linkedlist
-        public Node head;
-        public void InsertLast(int new_data)//creat method InserTlast 
-        {
-            Node new_node = new Node(new_data);//Creating a object of node and adding data in node
-
-            //fills the first position in linkedlist, when head points to nothing
+            Node newnode = new Node(data);
+            Node temp = head;
             if (this.head == null)
             {
-                this.head = new_node;
+                this.head = newnode;
             }
             else
             {
-                //get last node method is called to find out last node
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = newnode;
 
-                Node lastNode = GetLastNode();
-                lastNode.next = new_node;
             }
-            Console.WriteLine("inserted into list" + new_node.data);
-
+            Console.WriteLine("{0} this value is added", newnode.data);
         }
 
-        /// finds out the last node 
-        public Node GetLastNode()
+        internal void Display()
         {
             Node temp = this.head;
-            //if address in the temp node is not null, loop continues
-            while (temp.next != null)
+            if (temp == null)
             {
+                Console.WriteLine("Empty Linked list");
+                return;
+            }
+            while (temp != null)
+            {
+                Console.Write(temp.data + " ");
                 temp = temp.next;
             }
-
-            //when temp.next ==null, means last element is reached, temp is returned
-            return temp;
         }
 
         /// <summary>
-        /// Data is inserted at left side of head
+        /// Insert 30 between 56 and 70
         /// </summary>
+        /// <param name="position"></param>
         /// <param name="data"></param>
-        public void InsertFront(int new_data)
+        internal void insertBetweenPosition(int position, int data)
         {
-            //object is created for adding data in node class
+            if (position < 1)
+            {
+                Console.WriteLine("Invalid Position");
+            }
 
-            Node new_node = new Node(new_data);
-
-            //head address is added in newly created node, hence the initial head is coming at last, and data is inserted at left
-            new_node.next = this.head;
-            this.head = new_node;
-            Console.WriteLine("inserted into front" + new_node);
+            if (position == 1)
+            {
+                var newNode = new Node(data);
+                newNode = this.head;
+                head = newNode;
+            }
+            else
+            {
+                while (position-- != 0)
+                {
+                    if (position == 1)
+                    {
+                        Node node = new Node(data);
+                        node.next = this.head.next;
+                        head.next = node;
+                        break;
+                    }
+                    head = head.next;
+                }
+            }
+            Console.WriteLine("\nHead is value" + head.data);
         }
 
-        internal Node DeleteFirstNode()
+        /// <summary>
+        /// Remove first element from linkedlist
+        /// </summary>
+        /// <returns></returns>
+        internal Node removeFirstNode()
         {
-            if (this.head == null)
+            if (head == null)
             {
                 return null;
             }
             this.head = this.head.next;
             return this.head;
         }
-
-        public Node DeleteLastNode()
+        /// <summary>
+        /// Remove Last Element or Node
+        /// </summary>
+        internal Node removeLastNode()
         {
-            Node newNode = this.head;
-            if (this.head == null)
-            {
-                return null;
-            }
-            if (this.head.next == null)
-            {
-                this.head = null;
-                return null;
-            }
-            while (newNode.next.next != null)
-            {
-                newNode = newNode.next;
-            }
-            newNode.next = null;
-            return newNode;
-        }
-
-        public bool Search(int input)
-        {
-            bool flag = false;
+            Node temp = head;
+            Node prev = temp;
             if (head == null)
-                Console.WriteLine("List is Empty");
+            {
+                return head;
+            }
             else
             {
-                Node temp = head;
-                while (temp != null)
+                if (temp.next.next == null)
                 {
-                    if (temp.data == input)
-                    {
-                        Console.WriteLine("The element is present");
-                        flag = true;
-                        break;
-                    }
-                    temp = temp.next;
+                    temp.next = null;
                 }
-                if (!flag)
-                    Console.WriteLine("The Element is Absent");
+                temp = temp.next;
+                return this.head;
+
             }
-            return flag;
         }
-        internal void Display()
+        /// <summary>
+        /// Search Node from Linkedlist
+        /// </summary>
+        /// <param name="value"></param>
+        public int findNodeWithValue(int value)
         {
-            //assigns head to 1st node.
-            //temp becomes first node of linkedlist
-            Node temp = this.head;
-
-            //if temp is null, then linkedlist is null
-            if (temp == null)
+            bool flag = true;
+            int count = 1;
+            Node temp = head;
+            while (flag)
             {
-                Console.WriteLine("Linked list is empty");
-                return;
-            }
-            else
-            {
-                //if temp contains data, then loop is iterated and values are printed
-
-                while (temp.next != null)
+                if (temp.data == value)
                 {
-                    Console.Write(temp.data + "->");
-                    temp = temp.next;
+                    flag = false;
                 }
-                Console.WriteLine(temp.data);
+                else
+                {
+                    temp = temp.next;
+                    count++;
+                }
             }
+            return count;
+        }
 
+        internal void AddAfterAtPerticulatPosition(int data)
+        {
+            Node newnode = new Node(40);
+            Node temp = head;
 
+            while (temp.next != null)
+            {
+                if (temp.data == data)
+                {
+                    newnode.next = temp.next;
+                    temp.next = newnode;
+                }
+                temp = temp.next;
+            }
+            Console.WriteLine("Given LinkedList = " + head.data);
         }
     }
 }
