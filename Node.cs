@@ -17,5 +17,5 @@ namespace DataStructure
             data = d;
             next = null;
         }
-}
+    }
 }
