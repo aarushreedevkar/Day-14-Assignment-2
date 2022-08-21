@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace DataStructure
 {
-    internal class Node
+    public static class Node
     {
+        public int data; //i have define two elements overthere
+        public Node next;
+
+        //constructor
+        public Node(int d)
+        {
+            data = d;
+            next = null;
+        }
     }
 }
+
