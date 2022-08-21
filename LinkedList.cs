@@ -8,8 +8,7 @@ namespace DataStructure
 {
     public class LinkedList
     {
-        
-            internal Node head;
+        internal Node head;
         public void Add(int data)
         {
             Node newnode = new Node(data);
@@ -153,7 +152,25 @@ namespace DataStructure
                 }
                 temp = temp.next;
             }
-            Console.WriteLine("Given LinkedList = " + head.data);
+        }
+
+        internal int deletePerticulatElement(int data)
+        {
+            Node temp = head;
+            int count = 1;
+            int position = 0;
+            while (temp.next != null)
+            {
+                if (temp.data == data)
+                {
+                    temp.next = temp.next.next;
+                }
+                temp = temp.next;
+                count++;
+            }
+            return count;
         }
     }
 }
+    
+
