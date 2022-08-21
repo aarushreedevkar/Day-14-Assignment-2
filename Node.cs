@@ -11,11 +11,12 @@ namespace DataStructure
         public int data; //i have define two elements overthere
         public Node next;
 
-        
+        //constructor
         public Node(int d)
         {
             data = d;
             next = null;
+
         }
     }
 }

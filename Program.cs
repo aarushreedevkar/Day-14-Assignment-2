@@ -4,14 +4,14 @@
     {
         public static void Main(string[] args)
         {
-           LinkedList list = new LinkedList();//creating object of linkedlist class
+            LinkedList list = new LinkedList();//creating object of linkedlist class
 
 
             list.InsertFront(70);
             list.InsertFront(30);
             list.InsertFront(56);
 
-            list.DeleteLastNode();
+            list.Search(30);
 
             list.Display();
 
