@@ -8,6 +8,7 @@ namespace DataStructure
 {
     public class LinkedList
     {
+         {
         public Node head;
         public void InsertLast(int data)//creat method InserTlast 
         {
